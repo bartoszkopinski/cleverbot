@@ -65,7 +65,7 @@ module Cleverbot
       body['stimulus'] = message
       body['icognocheck'] = digest HashConversions.to_params(body)
 
-      post(PATH, :body => body).parsed_response['message']
+      post(PATH, :body => body).parsed_response
     end
 
     # Initializes a Client with given parameters.
