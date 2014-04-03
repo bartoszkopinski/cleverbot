@@ -38,7 +38,9 @@ module Cleverbot
     base_uri 'http://www.cleverbot.com'
 
     parser Parser
-    headers 'Accept-Encoding' => 'deflate', 'Connection' => 'keep-alive'
+    headers 'Accept-Encoding' => 'deflate',
+            'Connection' => 'keep-alive',
+            'Content-Type' => 'application/x-www-form-urlencoded'
 
     # Holds the parameters for an instantiated Client.
     attr_reader :params
