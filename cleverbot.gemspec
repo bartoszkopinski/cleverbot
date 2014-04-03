@@ -17,9 +17,8 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
-    ".document",
     ".rspec",
-    ".rvmrc",
+    ".ruby-version",
     ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
