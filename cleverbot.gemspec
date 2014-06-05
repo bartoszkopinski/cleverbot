@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "cleverbot"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.authors = ["Benjamin Manns"]
   s.date = "2013-09-06"
