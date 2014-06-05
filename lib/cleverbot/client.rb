@@ -74,7 +74,8 @@ module Cleverbot
     #
     # [<tt>params</tt>] Optional <tt>Hash</tt> holding the initial parameters. Defaults to <tt>{}</tt>.
     def initialize params={}
-      @params = params
+      @params  = params
+      @decoder = HTMLEntities.new
     end
 
     # Sends a message and returns a <tt>String</tt> with the message received. Updates #params to maintain state.
@@ -84,11 +85,17 @@ module Cleverbot
     # [<tt>message</tt>] Optional <tt>String</tt> holding the message to be sent. Defaults to <tt>''</tt>.
     def write message=''
       response = self.class.write message, @params
-      message = response['message']
+      message  = decode_message(response['message'])
       response.keep_if { |key, value| DEFAULT_PARAMS.keys.include? key }
       @params.merge! response
       @params.delete_if { |key, value| DEFAULT_PARAMS[key] == value }
       message
+    end
+
+    private
+
+    def decode_message response
+      @decoder.decode(response.to_s).gsub(/\|([0-9]{4})/){ |s| s.hex.chr }
     end
   end
 end
